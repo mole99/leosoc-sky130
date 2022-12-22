@@ -1,3 +1,0 @@
-[submodule "verilog/rtl/leorv-fpga"]
-	path = verilog/rtl/leorv-fpga
-	url = git@codeberg.org:mole99/leorv32-fpga.git
