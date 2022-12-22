@@ -1,5 +1,14 @@
 # Caravel user project includes
--v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
-
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/soc/rtl/dual_soc_svga.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/sram/rtl/sram.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/svga/rtl/svga_gen.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/svga/rtl/svga_gen_top.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/uart/rtl/my_uart_rx.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/uart/rtl/my_uart_tx.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/util/rtl/synchronizer.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/wb_memory/rtl/wb_memory.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/mem_port_switch/rtl/mem_port_switch.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/leorv32/rtl/leorv32_pkg.sv
+-v $(USER_PROJECT_VERILOG)/rtl/leorv-fpga/leorv32/rtl/leorv32.sv
  
