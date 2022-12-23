@@ -82,40 +82,51 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-user_proj_example mprj (
+// Set pin direction
+
+assign io_oeb[5] = 1'b1;
+assign io_oeb[6] = 1'b0;
+assign io_oeb[7] = 1'b0;
+assign io_oeb[23:8] = '0;
+
+soc soc_inst (
+
 `ifdef USE_POWER_PINS
-	.vccd1(vccd1),	// User area 1 1.8V power
-	.vssd1(vssd1),	// User area 1 digital ground
+    .vccd1(vccd1),	// User area 1 1.8V supply
+    .vssd1(vssd1),	// User area 1 digital ground
 `endif
 
-    .wb_clk_i(wb_clk_i),
-    .wb_rst_i(wb_rst_i),
+    .clk(wb_clk_i), // 40 MHz
+    .reset(!la_data_in[0]),
 
-    // MGMT SoC Wishbone Slave
+    .uart_rx(io_in[5]),
+    .uart_tx(io_out[6]),
 
-    .wbs_cyc_i(wbs_cyc_i),
-    .wbs_stb_i(wbs_stb_i),
-    .wbs_we_i(wbs_we_i),
-    .wbs_sel_i(wbs_sel_i),
-    .wbs_adr_i(wbs_adr_i),
-    .wbs_dat_i(wbs_dat_i),
-    .wbs_ack_o(wbs_ack_o),
-    .wbs_dat_o(wbs_dat_o),
+    .blink(io_out[7]),
 
-    // Logic Analyzer
-
-    .la_data_in(la_data_in),
-    .la_data_out(la_data_out),
-    .la_oenb (la_oenb),
-
-    // IO Pads
-
-    .io_in (io_in),
-    .io_out(io_out),
-    .io_oeb(io_oeb),
-
-    // IRQ
-    .irq(user_irq)
+    // PMOD DVI TODO
+    .dvi_clk(io_out[8]),    // DVI pixel clock
+    .dvi_hsync(io_out[9]),  // DVI horizontal sync
+    .dvi_vsync(io_out[10]),  // DVI vertical sync
+    .dvi_de(io_out[11]),     // DVI data enable
+    .dvi_r(io_out[15:12]),      // 4-bit DVI red
+    .dvi_g(io_out[19:16]),      // 4-bit DVI green
+    .dvi_b(io_out[23:20]),      // 4-bit DVI blue
+    
+    // Wishbone Port
+    
+    .wb_clk_i,
+    .wb_rst_i,
+    .wbs_stb_i,
+    .wbs_cyc_i,
+    .wbs_we_i,
+    .wbs_sel_i,
+    .wbs_dat_i,
+    .wbs_adr_i,
+    .wbs_ack_o,
+    .wbs_dat_o,
+    
+    .port_select(la_data_in[1])
 );
 
 endmodule	// user_project_wrapper
