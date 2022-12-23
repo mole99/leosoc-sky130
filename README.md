@@ -23,3 +23,7 @@ This is a simple SoC with the following:
 | VRAM_BASE  | 0x010000 |
 | UART_BASE  | 0x0A0000 |
 | BLINK_BASE | 0x0F0000 |
+
+# Layout
+
+![leosoc.png](img/leosoc.png)
