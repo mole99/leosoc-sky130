@@ -1,0 +1,110 @@
+Archive member included to satisfy reference by file (symbol)
+
+/opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+                              firmware/main.o (__divsi3)
+
+Discarded input sections
+
+ .debug_line    0x0000000000000000      0x153 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ .debug_line_str
+                0x0000000000000000       0x9d /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ .debug_info    0x0000000000000000       0x25 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ .debug_abbrev  0x0000000000000000       0x14 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ .debug_str     0x0000000000000000       0xa3 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000000000000 0x0000000000000800 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000000000000      0x410
+                0x0000000000000000                . = ALIGN (0x4)
+ *(.reset_vector*)
+ .reset_vector  0x0000000000000000        0x4 firmware/start.o
+ *(.text)
+ .text          0x0000000000000004       0x94 firmware/start.o
+ .text          0x0000000000000098       0xec firmware/main.o
+                0x0000000000000098                busy_loop
+                0x00000000000000ac                tx_uart
+                0x00000000000000c8                rx_uart
+                0x00000000000000e0                rx_uart_nonblocking
+                0x00000000000000f4                write
+                0x0000000000000128                get_instret
+                0x0000000000000130                get_cycle
+                0x0000000000000138                write_int
+ .text          0x0000000000000184       0xb4 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+                0x0000000000000184                __divsi3
+                0x000000000000018c                __udivsi3
+                0x00000000000001d4                __umodsi3
+                0x0000000000000208                __modsi3
+ *(.text*)
+ .text.startup  0x0000000000000238      0x19c firmware/main.o
+                0x0000000000000238                main
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.4
+                0x00000000000003d4       0x3b firmware/main.o
+ *(.srodata)
+ *(.srodata*)
+                0x0000000000000410                . = ALIGN (0x4)
+ *fill*         0x000000000000040f        0x1 
+                0x0000000000000410                _etext = .
+
+.rela.dyn       0x0000000000000410        0x0
+ .rela.text     0x0000000000000410        0x0 firmware/start.o
+
+.data           0x0000000000000410        0xc
+                0x0000000000000410                . = ALIGN (0x4)
+ *(.data)
+ .data          0x0000000000000410        0x0 firmware/start.o
+ .data          0x0000000000000410        0x0 firmware/main.o
+ .data          0x0000000000000410        0x0 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ *(.data*)
+ *(.sdata)
+ .sdata         0x0000000000000410        0xc firmware/main.o
+                0x0000000000000410                uart
+                0x0000000000000414                svga
+                0x0000000000000418                led
+ *(.sdata*)
+                0x000000000000041c                . = ALIGN (0x4)
+                0x000000000000041c                _edata = .
+
+.bss            0x000000000000041c        0x0
+                0x000000000000041c                . = ALIGN (0x4)
+                0x000000000000041c                _sbss = .
+ *(.bss)
+ .bss           0x000000000000041c        0x0 firmware/start.o
+ .bss           0x000000000000041c        0x0 firmware/main.o
+ .bss           0x000000000000041c        0x0 /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+ *(.bss*)
+ *(.sbss)
+ *(.sbss*)
+ *(COMMON)
+                0x000000000000041c                . = ALIGN (0x4)
+                0x000000000000041c                _ebss = .
+                0x000000000000041c                . = ALIGN (0x4)
+                0x000000000000041c                end = .
+                0x0000000000000800                PROVIDE (_stack = (ORIGIN (ram) + LENGTH (ram)))
+LOAD firmware/start.o
+LOAD firmware/main.o
+LOAD /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a
+OUTPUT(firmware/firmware.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x0000000000000000       0x20
+ .riscv.attributes
+                0x0000000000000000       0x1e firmware/start.o
+ .riscv.attributes
+                0x000000000000001e       0x1c firmware/main.o
+ .riscv.attributes
+                0x000000000000003a       0x1a /opt/riscv32i/lib/gcc/riscv32-unknown-elf/11.1.0/libgcc.a(div.o)
+
+.comment        0x0000000000000000       0x1b
+ .comment       0x0000000000000000       0x1b firmware/main.o
+                                         0x1c (size before relaxing)
